@@ -164,8 +164,9 @@ class Conrad(object):
                 stderr.write(u'    ' + request.get_full_url() + u'\n')
                 if request.get_data():
                     stderr.write(u'    ' + request.get_data() + u'\n')
-                stderr.write(u''.join(u'    ' + line + u'\n'
-                                      for line in e.fp.read().splitlines()))
+                stderr.write(u''.join(
+                    u'    ' + line + u'\n'
+                    for line in e.fp.read().decode('utf-8').splitlines()))
                 raise
         else:
             return urllib2.urlopen(request)
