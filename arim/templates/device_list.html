@@ -12,8 +12,8 @@
         <td class="device-description">{{ device['description'] }}</td>
         <td class="device-mac">{{ device['mac'] }}</td>
         <td>
-            <a class="edit" href=""><span class="glyphicon glyphicon-pencil"></span></a>
-            <a class="delete" href=""><span class="glyphicon glyphicon-remove"></span></a>
+            <a class="edit" href=""><span class="glyphicon glyphicon-pencil" role="button" aria-label="edit"></span></a>
+            <a class="delete" href=""><span class="glyphicon glyphicon-remove" role="button" aria-label="delete"></span></a>
         </td>
     </tr>
 {% endmacro %}
@@ -64,21 +64,21 @@
                         <h4 id="form-title">Register a new device</h4>
                     </div>
                     <div id="form-body" class="panel-body">
-                        <div id="form-server-error" class="alert alert-danger"
+                        <div id="form-server-error" class="alert alert-danger" role="alert"
                              style="display: none">A server error occurred.</div>
                         <form role="form" method="post" autocomplete="off" id="device-form">
-                        <div id="form-error" class="alert alert-danger"
+                        <div id="form-error" class="alert alert-danger" role="alert"
                             {% if not full %}style="display: none;" {% endif %}>You have registered 10 devices. Delete a device before trying to add another.</div>
                         <form role="form" method="post" autocomplete="off">
                             <input type="hidden" name="csrfmiddlewaretoken" value="{{ csrf_token }}">
                             <input type="hidden" id="id" name="id">
                             <div class="form-group">
                                 <label for="description">Description</label>
-                                <input class="form-control" type="text" name="description" id="description" {% if full %}disabled{% endif %}>
+                                <input class="form-control" type="text" name="description" id="description" aria-live="assertive" {% if full %}disabled{% endif %}>
                             </div>
                             <div class="form-group">
                                 <label for="mac">Hardware address</label>
-                                <input class="form-control" type="text" name="mac" id="mac" {% if full %}disabled{% endif %}>
+                                <input class="form-control" type="text" name="mac" id="mac" aria-live="assertive" {% if full %}disabled{% endif %}>
                                 <p class="help-block">A hardware address, also known as a MAC address, is a unique string of letters and numbers, optionally separated by colons or hyphens, that identifies your computer. It is not related to the Apple "Mac" brand.
                                     <a href="http://oregonstate.edu/helpdocs/network/resnet-getting-started/help-guides/finding-your-network-adapter-address">Click here for help locating your computer's hardware address.</a></p>
                             </div>

@@ -29,7 +29,12 @@ $(document).ready(function() {
 function set_form_errors(errors) {
     $.each(errors, function (name, text) {
         $('form').find('label[for=' + name + ']').first().after(
-            '<span class="error">' + text + '</span>');
+            '<span id="error-' + name + '" class="error" role="alert">' +
+            text + '</span>');
+        $('form').find('input[name=' + name + ']').first().attr(
+            'aria-invalid', 'true');
+        $('form').find('input[name=' + name + ']').first().attr(
+            'aria-describedby', 'error-' + name);
     });
 }
 
@@ -37,6 +42,7 @@ function set_form_errors(errors) {
 function clear_form_errors() {
     $('form').find('span.error').remove();
     $('#form-error').slideUp(200, 'easeInQuart');
+    $('form').find('input').removeAttr('aria-invalid');
 }
 
 
