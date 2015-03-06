@@ -162,11 +162,12 @@ class Conrad(object):
             except urllib2.HTTPError as e:
                 stderr.write(u"API request failed\n")
                 stderr.write(u'    ' + request.get_full_url() + u'\n')
-                if request.get_data():
-                    stderr.write(u'    ' + request.get_data() + u'\n')
-                stderr.write(u''.join(
-                    u'    ' + line + u'\n'
-                    for line in e.fp.read().decode('utf-8').splitlines()))
+                data = request.get_data()
+                if data:
+                    stderr.write(u'    ' + data + u'\n')
+                stderr.write(''.join(
+                    '    ' + line + '\n'
+                    for line in e.fp.read().splitlines()))
                 raise
         else:
             return urllib2.urlopen(request)
