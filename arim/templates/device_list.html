@@ -45,7 +45,7 @@
                         Are you sure you want to continue?</p>
                 </div>
                 <div class="modal-footer">
-                    <img id="loadingDelete" class="loading" src="/static/img/loading.gif" alt="Loading...">
+                    <img id="loadingDelete" class="loading" aria-hidden="true" src="/static/img/loading.gif">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
                     <button type="button" class="btn btn-danger" id="deleteDevice">Delete</button>
                 </div>
@@ -88,7 +88,7 @@
                             <button type="button" class="btn" id="prefill-mac" data-mac="{{ mac_address }}">Detect This Computer's Address</button>
                             {% endif %}
                             <button type="reset" class="btn" id="reset-form">Cancel</button>
-                            <img id="loading" class="loading" src="/static/img/loading.gif" alt="Loading...">
+                            <img id="loading" class="loading" aria-hidden="true" src="/static/img/loading.gif">
                         </form>
                     </div>
                 </div>
