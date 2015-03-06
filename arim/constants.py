@@ -19,6 +19,8 @@ SYSTEM_DETAIL_ENDPOINT = \
 SYSTEM_ATTR_ENDPOINT = 'core/system/attributes'
 DYNINTR_ENDPOINT = 'dhcp/dynamic_interface'
 
+DYNINTR_WORKGROUP = BASE_URL + 'dhcp/workgroup/{}/'.format(
+    settings.DEFAULT_WORKGROUP_PK)
 DYNINTR_RANGE = BASE_URL + 'dhcp/range/{}/'.format(settings.PUBLIC_RANGE_PK)
 DYNINTR_CTNR = BASE_URL + 'core/ctnr/{}/'.format(settings.PUBLIC_CTNR_PK)
 
