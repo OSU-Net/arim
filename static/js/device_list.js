@@ -81,11 +81,14 @@ function submit_form() {
 
     $('button#reset-form').css('display', 'none');
     $('img#loading').css('display', 'inline');
+    $('#form-body form').attr('aria-busy', 'true');
     $.post(document.pathname, post_data, function(data) {
         location.reload();
+        $('#form-body form').removeAttr('aria-busy');
     }, 'json').fail(function(data) {
         $('button#reset-form').css('display', 'inline-block');
         $('img#loading').css('display', 'none');
+        $('#form-body form').removeAttr('aria-busy');
         if (data.status == 422) {
             set_form_errors(data.responseJSON);
         } else {
