@@ -143,6 +143,7 @@ function confirm_delete_device(id) {
     });
 
     $("#deleteDeviceModal").modal();
+    $("#deleteDeviceLabel").focus();
 }
 
 
