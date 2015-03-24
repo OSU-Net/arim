@@ -1,3 +1,6 @@
+from os.path import abspath, dirname
+
+
 STATIC_ROOT = ''
 STATIC_URL = '/static/'
 STATICFILES_DIRS = (
@@ -38,3 +41,7 @@ AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend',
     'django_cas.backends.CASBackend',
 )
+
+ROOT = abspath(__file__)
+for i in range(3):
+    ROOT = dirname(ROOT)

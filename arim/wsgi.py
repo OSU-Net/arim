@@ -16,7 +16,10 @@ framework.
 import os
 import sys
 
-sys.path.append('/data/arim')
+from django.conf import settings
+
+
+sys.path.append(settings.ROOT)
 
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "arim.settings")
 
