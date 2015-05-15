@@ -1,11 +1,10 @@
 import json
 import urllib
 import urllib2
-from time import sleep
-from django.conf import settings
 from sys import stderr
+from time import sleep
 
-from arim.settings import DEBUG
+from django.conf import settings
 
 
 class Conrad(object):
@@ -156,7 +155,7 @@ class Conrad(object):
         return url
 
     def do_request(self, request):
-        if DEBUG:
+        if settings.DEBUG:
             try:
                 return urllib2.urlopen(request)
             except urllib2.HTTPError as e:
@@ -165,9 +164,12 @@ class Conrad(object):
                 data = request.get_data()
                 if data:
                     stderr.write(u'    ' + data + u'\n')
-                stderr.write(''.join(
-                    '    ' + line + '\n'
-                    for line in e.fp.read().splitlines()))
+                with open('error', 'wb') as f:
+                    f.write(e.fp.read())
+                with open('error', 'rb') as f:
+                    stderr.write(''.join(
+                        '    ' + line + '\n'
+                        for line in f.read().splitlines()))
                 raise
         else:
             return urllib2.urlopen(request)

@@ -1,6 +1,5 @@
 from hashlib import md5
 from string import hexdigits
-from sys import stderr
 from time import time
 import urllib2
 
