@@ -162,10 +162,10 @@ function delete_device(id) {
         num_span = $('span#number-of-devices');
         num_span.text(parseInt(num_span.text()) - 1);
         $('img#loadingDelete').css('display', 'none');
+        location.reload();
     }).fail(function() {
         $('img#loadingDelete').css('display', 'none');
         $('#device-list-server-error').slideDown(200, 'easeInQuart');
     });
     $("#deleteDeviceModal").modal('hide');
-    location.reload();
 }
