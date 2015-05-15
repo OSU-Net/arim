@@ -13,6 +13,9 @@ SYSTEM_QUERY_KEY = "i:system"
 USER_ATTR = "Other ID"
 DESC_ATTR = "Hardware type"
 
+CTNR_ENDPOINT = \
+    lambda x: BASE_URL + 'core/ctnr/{}/'.format(x)
+
 SYSTEM_ENDPOINT = 'core/system'
 SYSTEM_DETAIL_ENDPOINT = \
     lambda x: BASE_URL + SYSTEM_ENDPOINT + "/{}/".format(x)
