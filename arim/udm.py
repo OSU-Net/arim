@@ -7,8 +7,8 @@ from django.conf import settings
 
 from arim.conrad import Conrad
 from arim.constants import (
-    API_KEY, BASE_URL, USER_QUERY_KEY, SYSTEM_ENDPOINT, DESC_ATTR,
-    SYSTEM_QUERY_KEY, DYNINTR_ENDPOINT, USER_ATTR, SYSTEM_NAME,
+    API_KEY, BASE_URL, CTNR_ENDPOINT, USER_QUERY_KEY, SYSTEM_ENDPOINT,
+    DESC_ATTR, SYSTEM_QUERY_KEY, DYNINTR_ENDPOINT, USER_ATTR, SYSTEM_NAME,
     SYSTEM_DETAIL_ENDPOINT, SYSTEM_ATTR_ENDPOINT, DYNINTR_WORKGROUP,
     DYNINTR_RANGE, DYNINTR_CTNR)
 from arim.utils import first
@@ -98,7 +98,9 @@ class UserDeviceManager(object):
 
         # create the new system
         system_data = {
-            'name': SYSTEM_NAME.format(hash), 'ctnr': settings.PUBLIC_CTNR_PK}
+            'name': SYSTEM_NAME.format(hash),
+            'ctnr': CTNR_ENDPOINT(settings.PUBLIC_CTNR_PK)
+        }
         system_resp = self.api_client.post(SYSTEM_ENDPOINT, system_data)
         system_id = system_resp['id']
 
@@ -129,7 +131,6 @@ class UserDeviceManager(object):
                 "mac": mac,
                 "range": DYNINTR_RANGE,
                 "system": system_url,
-                "ctnr": DYNINTR_CTNR,
                 "workgroup": DYNINTR_WORKGROUP,
             }
             self.api_client.post(DYNINTR_ENDPOINT, interface_data)
