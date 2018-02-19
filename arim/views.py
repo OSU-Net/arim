@@ -66,8 +66,11 @@ def device_list_view(request):
 
             if form.cleaned_data['id'] is None:
                 # create_device(**form.cleaned_data)
-                udm.create(form.cleaned_data['description'],
-                           form.cleaned_data['mac'])
+                try:
+                    udm.create(form.cleaned_data['description'],
+                               form.cleaned_data['mac'])
+                except:
+                    return HttpResponse('{"mac": ["Specified MAC address may already be registered."]}', status=422)
             else:
                 # update_device(**form.cleaned_data)
                 udm.update(form.cleaned_data['id'],

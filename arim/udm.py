@@ -52,11 +52,12 @@ class UserDeviceManager(object):
 
             # pull dynamic intr MAC
             mac = d['mac']
-            devices.append({
-                'id': s['id'],
-                'description': desc,
-                'mac': mac,
-            })
+            if d['range'] == DYNINTR_RANGE:
+                devices.append({
+                    'id': s['id'],
+                    'description': desc,
+                    'mac': mac,
+                })
 
         return devices
 
