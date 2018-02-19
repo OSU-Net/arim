@@ -27,4 +27,4 @@ DYNINTR_WORKGROUP = BASE_URL + 'dhcp/workgroup/{}/'.format(
 DYNINTR_RANGE = BASE_URL + 'dhcp/range/{}/'.format(settings.PUBLIC_RANGE_PK)
 DYNINTR_CTNR = BASE_URL + 'core/ctnr/{}/'.format(settings.PUBLIC_CTNR_PK)
 
-SYSTEM_NAME = 'public-{}-Wireless'
+SYSTEM_NAME = 'cllc-{}-Wireless'

@@ -19,9 +19,10 @@ import sys
 from django.conf import settings
 
 
-sys.path.append(settings.ROOT)
+sys.path.append('/data/selfreg')
 
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "arim.settings")
+os.environ['HTTPS'] = "on"
 
 # This application object is used by any WSGI server configured to use this
 # file. This includes Django's development server, if the WSGI_APPLICATION

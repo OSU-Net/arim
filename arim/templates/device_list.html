@@ -56,7 +56,7 @@
     <div class="container" id="main">
         <div class="row">
                 <div class="page-header">
-                    <h1>Wireless Device Registration</h1>
+                    <h1>Cascades Device Registration</h1>
                 </div>
                 <p>Welcome, {{ user.username }}! Enter a device's information to register it for network access.</p>
                 <div class="panel panel-default">
@@ -84,9 +84,6 @@
                                     <a href="http://oregonstate.edu/helpdocs/network/resnet-getting-started/help-guides/finding-your-network-adapter-address">Click here for help locating your computer's hardware address.</a></p>
                             </div>
                             <button type="submit" class="btn btn-primary" {% if full %}disabled {% endif %}>Register</button>
-                            {% if mac_address %}
-                            <button type="button" class="btn" id="prefill-mac" data-mac="{{ mac_address }}">Detect This Computer's Address</button>
-                            {% endif %}
                             <button type="reset" class="btn" id="reset-form">Cancel</button>
                             <img id="loading" class="loading" aria-hidden="true" src="/static/img/loading.gif">
                         </form>
